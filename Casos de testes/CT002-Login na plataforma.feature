@@ -15,11 +15,11 @@ Cenário: Fazer login na plataforma EBAC-Shop com sucesso
 Dado que eu acesse a página de login
 Quando eu digitar <Username or email address> e <Password> válidos
 E clicar no botão login
-Então deve acessar a página "Minha Conta"
+Então deve acessar a página "Minha Conta" e exibir <mensagem> de sucesso
 
-Examples:
-    | Username or email address | Password        | mensagem                       |
-    | aluno_ebac@teste.com      | teste@teste.com | Olá, Aluno (não é Aluno? Sair) |
+        Examples:
+            | Username or email address | Password       | mensagem                                     |
+            | rodrigo.ebac@ebacshop.com | Rodrigo@ebac01 | Olá, rodrigo.ebac (não é rodrigo.ebac? Sair) |
 
 
 Cenário: Fazer login na plataforma EBAC-Shop com usuário inválido
@@ -28,9 +28,9 @@ Quando eu digitar <Username or email address> e <Password>
 E clicar no botão login
 Então deve acessar exibir <mensage> de alerta
 
-Examples:
-    | Username or email address | Password        | mensagem                                                                           |
-    | 123_ebac@teste.com        | teste@teste.com | Endereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário. |
+        Examples:
+            | Username or email address | Password       | mensagem                                                                           |
+            | 123_ebac@teste.com        | Rodrigo@ebac01 | Endereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário. |
 
 
 Cenário: Fazer login na plataforma EBAC-Shop com senha inválida
@@ -39,12 +39,6 @@ Quando eu digitar <Username or email address> e <Password>
 E clicar no botão login
 Então deve acessar exibir <mensage> de alerta
 
-Examples:
-    | Username or email address | Password      | mensagem                                                                                   |
-    | aluno_ebac@teste.com      | 123@teste.com | Erro: a senha fornecida para o e-mail aluno_ebac@teste.com está incorreta. Perdeu a senha? |
-
-
-
-
-
-
+        Examples:
+            | Username or email address | Password      | mensagem                                                                                   |
+            | rodrigo.ebac@ebacshop.com | 123@teste.com | Erro: a senha fornecida para o e-mail aluno_ebac@teste.com está incorreta. Perdeu a senha? |
