@@ -25,7 +25,7 @@ Então deve cadastrar um novo usuário e exibir <mensagem> de sucesso
             | rodrigo.ebac@ebacshop.com | Rodrigo@ebac01 | Olá, rodrigo.ebac (não é rodrigo.ebac? Sair) |
 
 
-Cenário: Verificar mensagem de alerta de senha com 3 caracteres
+Cenário: Validar mensagem de alerta de senha com 3 caracteres
 Dado que eu acesse a página de login
 Quando eu digitar <Email address> e <Password> com 3 caracteres
 E clicar no botão register
@@ -36,7 +36,7 @@ Então deve exibir <mensagem> de alerta
             | rodrigo.ebac@ebacshop.com | Rod      | Muito fraca - Digite uma senha segura. |
 
 
-Cenário: Verificar mensagem de alerta de senha com 8 caracteres
+Cenário: Validar mensagem de alerta de senha com 8 caracteres
 Dado que eu acesse a página de login
 Quando eu digitar <Email address> e <Password> com 8 caracteres
 E clicar no botão register
@@ -47,7 +47,7 @@ Então deve exibir <mensagem> de alerta
             | rodrigo.ebac@ebacshop.com | Rodrigo@ | Fraca - Digite uma senha segura. |
 
 
-Cenário: Verificar mensagem de alerta de senha com 10 caracteres
+Cenário: Validar mensagem de alerta de senha com 10 caracteres
 Dado que eu acesse a página de login
 Quando eu digitar <Email address> e <Password> com 10 caracteres
 E clicar no botão register
@@ -55,10 +55,10 @@ Então deve exibir <mensagem> de alerta
 
         Examples:
             | Email address             | Password   | mensagem |
-            | rodrigo.ebac@ebacshop.com | Rodrigo@eb | "Médio.  |
+            | rodrigo.ebac@ebacshop.com | Rodrigo@eb | Médio.   |
 
 
-Cenário: Verificar mensagem de alerta de senha com 11 caracteres
+Cenário: Validar mensagem de alerta de senha com 11 caracteres
 Dado que eu acesse a página de login
 Quando eu digitar <Email address> e <Password> com 11 caracteres
 E clicar no botão register

@@ -40,5 +40,5 @@ E clicar no botão login
 Então deve acessar exibir <mensage> de alerta
 
         Examples:
-            | Username or email address | Password      | mensagem                                                                                   |
-            | rodrigo.ebac@ebacshop.com | 123@teste.com | Erro: a senha fornecida para o e-mail aluno_ebac@teste.com está incorreta. Perdeu a senha? |
+            | Username or email address | Password      | mensagem                                                                                        |
+            | rodrigo.ebac@ebacshop.com | 123@teste.com | Erro: a senha fornecida para o e-mail rodrigo.ebac@ebacshop.com está incorreta. Perdeu a senha? |

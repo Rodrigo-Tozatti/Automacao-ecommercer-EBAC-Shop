@@ -1,0 +1,25 @@
+{
+  "name": "projeto-cypress-robot",
+  "version": "1.0.0",
+  "description": "Projeto Cypress Robot Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy.open": "npx cypress open",
+    "cy.run": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rodrigo-Tozatti/Projeto-cypress-robot.git"
+  },
+  "author": "Rodrigo Tozatti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rodrigo-Tozatti/Projeto-cypress-robot/issues"
+  },
+  "homepage": "https://github.com/Rodrigo-Tozatti/Projeto-cypress-robot#readme",
+  "dependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "cypress": "^12.12.0"
+  }
+}
