@@ -1,4 +1,9 @@
 {
   "email": "rodrigo.ebac@ebacshop.com",
-  "password": "Rodrigo@ebac01"
+  "password": "Rodrigo@ebac01",
+
+  "produto": "Abominable Hoodie",
+  "tamanho": "M",
+  "cor": "Blue", 
+  "quantidade": "1"
 }
