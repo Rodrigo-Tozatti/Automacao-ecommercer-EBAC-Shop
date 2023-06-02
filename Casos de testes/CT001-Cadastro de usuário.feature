@@ -2,7 +2,7 @@
 
 Funcionalidade: Cadastro de usuário
 Como usuário do site EBAC-SHOP
-Quero fazer meu cadastro no site
+Quero fazer meu cadastro na plataforma
 
 Regras do Negócio:
 

@@ -26,7 +26,7 @@ Então deve exibir a <mensagem> de sucesso
 Cenário: Validar compras com quantidade <= 10 itens do mesmo produto
 Dado que eu acesse a página de produtos da EBAC-Shop
 Quando eu comprar o <produto> desejado
-Se a <quantidade do produto> for maior <= 10
+Se a <quantidade do produto> for <= 10
 Então deve exibir a <mensagem>
 
         Examples:

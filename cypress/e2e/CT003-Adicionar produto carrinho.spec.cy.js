@@ -2,16 +2,19 @@ const dados = require('../fixtures/dados.json')
 
 describe('Adicionar produto ao carrinho', () => {
 
-  before(() => {
+  beforeEach(() => {
     cy.visit('')
     cy.login_plataforma(dados.email, dados.password)
   });
 
+  /*afterEach(() => {
+    cy.get('.logo-in-theme > .logo > a > .logo-img').click()
+    cy.limpa_carrinho()
+  });*/
+
   it('Adicionar produto ao carrinho com sucesso', () => {
     cy.add_produto(dados.produto, dados.tamanho, dados.cor, dados.quantidade)
     cy.get('.woocommerce-message').should('contain', '“Abominable Hoodie” foi adicionado no seu carrinho.')
-
-    cy.limpa_carrinho()
   })
 
   it('Validar compras com quantidade <= 10 itens do mesmo produto', () => {
@@ -19,8 +22,6 @@ describe('Adicionar produto ao carrinho', () => {
 
     cy.add_produto(dados.produto, dados.tamanho, dados.cor, quant)
     cy.get('.woocommerce-message').should('contain', quant + ' × “Abominable Hoodie” foram adicionados no seu carrinho.')
-
-    cy.limpa_carrinho()
   });
 
   it('Validar mensagem de erro ao adicionar mais de 10 itens do mesmo produto no carrinho', () => {
@@ -28,30 +29,32 @@ describe('Adicionar produto ao carrinho', () => {
 
     cy.add_produto(dados.produto, dados.tamanho, dados.cor, quant)
     cy.get('.woocommerce-message').should('contain', 'Não é permitido inserir mais de 10 itens de um mesmo produto ao carrinho.')
-
-    cy.limpa_carrinho()
   })
+
+
 
   it.only('Validar compras com valor <= R$ 990,00', () => {
-    let quant = '1'
+    let quant = '14'
+    var valor = '990'
+    const valor_01 = parseFloat(valor.replace(','));
+    cy.log(valor_01)
+
+    
 
     cy.add_produto(dados.produto, dados.tamanho, dados.cor, quant)
-    //cy.get('#cart > a > span.sub-title > span').invoke('text').then((total) => {
-    cy.xpath('//*[@id="cart"]/a/span[2]/span/bdi/text()').invoke('text').then((total) => {
-      cy.log(total).should('be.lessThan', 990)
-    })
-    //cy.get('.woocommerce-message').should('contain', quant + ' × “Abominable Hoodie” foram adicionados no seu carrinho.')
+    cy.xpath('//*[@id="cart"]/a/span[2]/span/bdi/text()').invoke('text').then(parseFloat)
+      .should('be.a', 'number')
+      .and('be.lessThan', valor_01)
 
-    //cy.limpa_carrinho()
   })
+
+
 
   it('Validar mensagem de erro quando o valor de uma compra ultrapassar R$ 990,00', () => {
     let quant = '15'
 
     cy.add_produto(dados.produto, dados.tamanho, dados.cor, quant)
     cy.get('.woocommerce-message').should('contain', 'Os valores não podem ultrapassar a R$ 990,00.')
-
-    cy.limpa_carrinho()
   })
 
   it('Valor de compra < R$ 200,00 não deve gerar cupom de desconto', () => {
@@ -65,11 +68,7 @@ describe('Adicionar produto ao carrinho', () => {
         expect(subtotal).to.eq(total)
       })
     })
-
-    cy.get('.remove > .fa').click()
+    //cy.get('.remove > .fa').click()
   })
-
-
-
 
 })
