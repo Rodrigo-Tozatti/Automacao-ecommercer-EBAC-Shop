@@ -86,14 +86,8 @@ Então deve exibir <cupom> de 10% de desconto
 
         Examples:
             | produto           | valor da compra | cupom |
-            | Abominable Hoodie | 199,99          | 0%    |
             | Abominable Hoodie | 200,00          | 10%   |
             | Abominable Hoodie | 600,00          | 10%   |
-            | Abominable Hoodie | 600,01          | 15%   |
-
-
-
-
 
 
 Cenário: Validar cupom de 15% de desconto para compras acima de R$ 600,00
@@ -104,5 +98,4 @@ Então deve exibir <cupom> de 10% de desconto
 
         Examples:
             | produto           | valor da compra | cupom |
-            | Abominable Hoodie | 600,00          | 10%   |
             | Abominable Hoodie | 600,01          | 15%   |

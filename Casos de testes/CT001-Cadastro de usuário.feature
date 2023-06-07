@@ -27,8 +27,8 @@ Então deve cadastrar um novo usuário e exibir <mensagem> de sucesso
 
 Cenário: Validar mensagem de alerta de senha com 3 caracteres
 Dado que eu acesse a página de login
-Quando eu digitar <Email address> e <Password> com 3 caracteres
-E clicar no botão register
+Quando eu digitar <Email address>
+E <Password> com 3 caracteres
 Então deve exibir <mensagem> de alerta
 
         Examples:
@@ -38,8 +38,8 @@ Então deve exibir <mensagem> de alerta
 
 Cenário: Validar mensagem de alerta de senha com 8 caracteres
 Dado que eu acesse a página de login
-Quando eu digitar <Email address> e <Password> com 8 caracteres
-E clicar no botão register
+Quando eu digitar <Email address>
+E <Password> com 8 caracteres
 Então deve exibir <mensagem> de alerta
 
         Examples:
@@ -49,8 +49,8 @@ Então deve exibir <mensagem> de alerta
 
 Cenário: Validar mensagem de alerta de senha com 10 caracteres
 Dado que eu acesse a página de login
-Quando eu digitar <Email address> e <Password> com 10 caracteres
-E clicar no botão register
+Quando eu digitar <Email address>
+E <Password> com 10 caracteres
 Então deve exibir <mensagem> de alerta
 
         Examples:
@@ -60,8 +60,8 @@ Então deve exibir <mensagem> de alerta
 
 Cenário: Validar mensagem de alerta de senha com 11 caracteres
 Dado que eu acesse a página de login
-Quando eu digitar <Email address> e <Password> com 11 caracteres
-E clicar no botão register
+Quando eu digitar <Email address>
+E <Password> com 11 caracteres
 Então deve exibir <mensagem> de alerta
 
         Examples:
