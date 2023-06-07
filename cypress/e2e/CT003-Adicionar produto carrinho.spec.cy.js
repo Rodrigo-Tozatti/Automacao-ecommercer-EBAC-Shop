@@ -25,15 +25,6 @@ describe('Adicionar produto ao carrinho', () => {
   });
 
 
-  it('Validar mensagem de erro ao adicionar mais de 10 itens do mesmo produto no carrinho', () => {
-    let quant = '11'
-
-    cy.add_produto(dados.produto, dados.tamanho, dados.cor, quant)
-    cy.get('.woocommerce-message').should('contain', 'Não é permitido inserir mais de 10 itens de um mesmo produto ao carrinho.')
-
-  })
-
-
   it('Validar compras com valor <= R$ 990,00', () => {
     let quant = '14'
     var valor = '990,00'
@@ -48,14 +39,6 @@ describe('Adicionar produto ao carrinho', () => {
   })
 
 
-  it('Validar mensagem de erro quando o valor de uma compra ultrapassar R$ 990,00', () => {
-    let quant = '15'
-
-    cy.add_produto(dados.produto, dados.tamanho, dados.cor, quant)
-    cy.get('.woocommerce-message').should('contain', 'Os valores não podem ultrapassar a R$ 990,00.')
-  })
-
-
   it('Valor de compra < R$ 200,00 não deve gerar cupom de desconto', () => {
     let quant = '2'
 
@@ -64,11 +47,31 @@ describe('Adicionar produto ao carrinho', () => {
 
     cy.xpath('//*[@id="main"]/div/div[3]/div/table/tbody/tr[1]/td/span/bdi/text()').invoke('text').then(($value_1) => {
       cy.xpath(`//*[@id="main"]/div/div[3]/div/table/tbody/tr[2]/td/strong/span/bdi/text()`).invoke('text').then(($value_2) => {
-        expect($value_1).to.eq($value_2)
+
+        var valor_01 = parseFloat($value_1)
+        var valor_02 = parseFloat($value_2)
+
+        expect(valor_01).to.eq(valor_02)
+        expect(valor_01).to.be.lessThan(200)
       })
     })
   })
 
+  // ------------------------------------------------------------------------------
+
+  it('Validar mensagem de erro ao adicionar mais de 10 itens do mesmo produto no carrinho', () => {
+    let quant = '11'
+
+    cy.add_produto(dados.produto, dados.tamanho, dados.cor, quant)
+    cy.get('.woocommerce-message').should('contain', 'Não é permitido inserir mais de 10 itens de um mesmo produto ao carrinho.')
+  })
+
+  it('Validar mensagem de erro quando o valor de uma compra ultrapassar R$ 990,00', () => {
+    let quant = '15'
+
+    cy.add_produto(dados.produto, dados.tamanho, dados.cor, quant)
+    cy.get('.woocommerce-message').should('contain', 'Os valores não podem ultrapassar a R$ 990,00.')
+  })
 
   it('Valor de compra >= R$ 200,00 deve gerar cupom de 10% de desconto', () => {
     let quant = '3'
@@ -86,7 +89,6 @@ describe('Adicionar produto ao carrinho', () => {
       expect(valor).to.be.eq(valor_desconto)
     })
   })
-
 
   it('Valor de compra <= R$ 600,00 deve gerar cupom de 10% de desconto', () => {
     let quant = '8'
@@ -121,4 +123,5 @@ describe('Adicionar produto ao carrinho', () => {
       expect(valor).to.be.eq(valor_desconto)
     })
   })
+
 })
