@@ -3,13 +3,12 @@ const dados = require('../fixtures/dados.json')
 describe('Adicionar produto ao carrinho', () => {
 
   beforeEach(() => {
-    cy.visit('')
-    cy.login_plataforma(dados.email, dados.password)
+    cy.login_app(dados.email, dados.password)
   });
 
-  afterEach(() => {
+  /*afterEach(() => {
     cy.limpar_carrinho()
-  });
+  });*/
 
   it('Adicionar produto ao carrinho com sucesso', () => {
     cy.add_produto(dados.produto, dados.tamanho, dados.cor, dados.quantidade)
@@ -123,5 +122,19 @@ describe('Adicionar produto ao carrinho', () => {
       expect(valor).to.be.eq(valor_desconto)
     })
   })
+
+  it.only('Intercept Abominable', () => {
+    cy.intercept({
+      method: 'GET',
+      utl: 'wp-admin/admin-ajax*',
+      query: {
+        term: 'Abominable'
+      }
+    })
+    
+    
+    cy.get('#tbay-header > div.header-main.clearfix > div > div > div > div.search.col-md-6.hidden-sm.hidden-xs > div > form > div > div > input.tbay-search.form-control.input-sm').type('Abominable')
+    
+  });
 
 })

@@ -14,12 +14,12 @@ Cypress.Commands.add('Validar_senha', (email, password) => {
     cy.get('#reg_password').type(password)
 })
 
-Cypress.Commands.add('login_plataforma', (email, password) => {
+/*Cypress.Commands.add('login_plataforma', (email, password) => {
     cy.get('.icon-user-unfollow').click()
     cy.get('#username').type(email)
     cy.get('#password').type(password)
     cy.get('.woocommerce-form > .button').click()
-})
+})*/
 
 Cypress.Commands.add('add_produto', (produto, tamanho, cor, quantidade) => {
     cy.get('#primary-menu > .menu-item-629 > a').click()
@@ -31,7 +31,23 @@ Cypress.Commands.add('add_produto', (produto, tamanho, cor, quantidade) => {
 })
 
 Cypress.Commands.add('limpar_carrinho', () => {
-    cy.get('#cart > a').click()
-    cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .view-cart').click()
+    cy.visit('carrinho/')
     cy.get('.remove > .fa').click()
+})
+
+
+Cypress.Commands.add('login_app', (username, password) => {
+    const fd = new FormData()
+    fd.append('username', username)
+    fd.append('password', password)
+    fd.append('woocommerce-login-nonce', '06e93a27f1')
+    fd.append('_wp_http_referer', `minha-conta/`)
+    fd.append('login', 'Login')
+
+    cy.request({
+        url: 'minha-conta/',
+        method: 'POST',
+        body: fd
+    })
+    cy.visit('minha-conta/')
 })

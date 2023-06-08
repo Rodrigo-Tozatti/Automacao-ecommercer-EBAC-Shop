@@ -21,7 +21,7 @@
   "homepage": "https://github.com/Rodrigo-Tozatti/Projeto-cypress-robot#readme",
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
-    "cypress": "^12.12.0"
+    "cypress": "^12.14.0"
   },
   "devDependencies": {
     "@cypress/xpath": "^2.0.3"
