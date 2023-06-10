@@ -8,8 +8,8 @@ Regras do Negócio
 
 1 - Não é permitido inserir mais de 10 itens de um mesmo produto ao carrinho.
 2 - Os valores não podem ultrapassar a R$ 990,00
-3 - Valores entre R$ 200 e R$ 600 , ganham cupom de 10%
-4 - Valores acima de R$ 600 ganham cupom de 15%
+3 - Valores entre R$ 200 e R$ 600 , ganham 10% de desconto
+4 - Valores acima de R$ 600 ganham 15% de desconto
 
 Cenário: Adicionar produto ao carrinho com sucesso
 Dado que eu acesse a página de produtos da EBAC-Shop
@@ -48,8 +48,8 @@ Então deve exibir a <mensagem> de erro
 Cenário: Validar compras com valor <= R$ 990,00
 Dado que eu acesse a página de produtos da EBAC-Shop
 Quando eu comprar o <produto> desejado
-Se o <valor da compra> ultrapassar R$ 900,00
-Então deve exibir a <mensagem> de erro
+Se o <valor da compra> for <= R$ 990,00
+Então deve exibir a <mensagem> de produto(s) adicionado ao carrinho
 
         Examples:
             | produto           | valor da compra | mensagem                                               |
@@ -59,43 +59,43 @@ Então deve exibir a <mensagem> de erro
 Cenário: Validar mensagem de erro quando o valor de uma compra ultrapassar R$ 990,00
 Dado que eu acesse a página de produtos da EBAC-Shop
 Quando eu comprar o <produto> desejado
-Se o <valor da compra> ultrapassar R$ 900,00
+Se o <valor da compra> ultrapassar R$ 990,00
 Então deve exibir a <mensagem> de erro
 
         Examples:
-            | produto           | valor da compra | mensagem                                      |
-            | Abominable Hoodie | 990,01          | Os valores não podem ultrapassar a R$ 990,00. |
+            | produto           | valor da compra | mensagem                                             |
+            | Abominable Hoodie | 990,01          | O valor da compra não podem ultrapassar a R$ 990,00. |
 
 
 Cenário: Valor de compra < R$ 200,00 não deve gerar cupom de desconto
 Dado que eu acesse a página de produtos da EBAC-Shop
 Quando eu comprar o <produto> desejado
 Se o <valor da compra> for < R$ 200,00
-Então não deve deve gerar <cupom> de desconto
+Então não deve deve gerar <desconto>
 
         Examples:
-            | produto           | valor da compra | cupom |
-            | Abominable Hoodie | 199,99          | 0%    |
+            | produto           | valor da compra | desconto |
+            | Abominable Hoodie | 199,99          | 0%       |
 
 
-Cenário: Validar cupom de 10% de desconto para compras entre R$ 200,00 e R$ 600,00
+Cenário: Validar 10% de desconto para compras entre R$ 200,00 e R$ 600,00
 Dado que eu acesse a página de produtos da EBAC-Shop
 Quando eu comprar o <produto> desejado
 Se o <valor da compra> estiver entre 200,00 e R$ 600,00
-Então deve exibir <cupom> de 10% de desconto
+Então deve exibir <desconto> de 10%
 
         Examples:
-            | produto           | valor da compra | cupom |
-            | Abominable Hoodie | 200,00          | 10%   |
-            | Abominable Hoodie | 600,00          | 10%   |
+            | produto           | valor da compra | desconto |
+            | Abominable Hoodie | 200,00          | 10%      |
+            | Abominable Hoodie | 600,00          | 10%      |
 
 
-Cenário: Validar cupom de 15% de desconto para compras acima de R$ 600,00
+Cenário: Validar 15% de desconto para compras acima de R$ 600,00
 Dado que eu acesse a página de produtos da EBAC-Shop
 Quando eu comprar o <produto> desejado
 Se o <valor da compra> for acima de R$ 600,00
-Então deve exibir <cupom> de 10% de desconto
+Então deve exibir <desconto> de 15%
 
         Examples:
-            | produto           | valor da compra | cupom |
-            | Abominable Hoodie | 600,01          | 15%   |
+            | produto           | valor da compra | desconto |
+            | Abominable Hoodie | 600,01          | 15%      |

@@ -14,12 +14,12 @@ Cypress.Commands.add('Validar_senha', (email, password) => {
     cy.get('#reg_password').type(password)
 })
 
-/*Cypress.Commands.add('login_plataforma', (email, password) => {
+Cypress.Commands.add('login_plataforma', (email, password) => {
     cy.get('.icon-user-unfollow').click()
     cy.get('#username').type(email)
     cy.get('#password').type(password)
     cy.get('.woocommerce-form > .button').click()
-})*/
+})
 
 Cypress.Commands.add('add_produto', (produto, tamanho, cor, quantidade) => {
     cy.get('#primary-menu > .menu-item-629 > a').click()
