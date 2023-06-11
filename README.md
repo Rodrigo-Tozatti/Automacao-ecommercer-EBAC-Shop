@@ -5,11 +5,13 @@ Automação de testes utilizando Cypress para o sistema de e-commerce EBAC-Shop
 
 Locais dos aqruivos:
 
->Plano de testes: Projeto-cypress-robot\Plano de teste
+>Plano de testes: Automacao-ecommercer-EBAC-Shop\Plano de teste
 
->Casos de testes: Projeto-cypress-robot\Casos de testes
+>Casos de testes: Automacao-ecommercer-EBAC-Shop\Casos de testes
 
->Testes: Projeto-cypress-robot\cypress\e2e
+>Testes: Automacao-ecommercer-EBAC-Shop\cypress\e2e
+
+>Relatórios: Automacao-ecommercer-EBAC-Shop\cypress\report\mochawesome-report
 <br />
 
 É necessário a instalações dos sistemas abaixo para rodar o projeto:
