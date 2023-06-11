@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy.open": "npx cypress open",
     "cy.run": "npx cypress run --browser chrome",
-    "cy.relatorio": "npx cypress run --record --key 8870453c-8672-4367-aaf7-896e5c652740 --browser chrome"
+    "report.cy": "npx cypress run --record --key 8870453c-8672-4367-aaf7-896e5c652740 --browser chrome",
+    "report.mocha": "npx cypress run --reporter mochawesome"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "cypress": "^12.14.0"
   },
   "devDependencies": {
-    "@cypress/xpath": "^2.0.3"
+    "@cypress/xpath": "^2.0.3",
+    "mochawesome": "^7.1.3"
   }
 }
