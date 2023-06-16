@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Setup') {
+            steps {
+                powershell 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                ansiColor('xterm') {
+                    powershell 'npm run cy.run'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'cypress\\report\\mochawesome-report\\report-jenkins', reportFiles: 'report-jenkins.html', reportName: 'JENKINS Report', reportTitles: '', useWrapperFileDirectly: true])
+            }
+        }
+    }
+}
