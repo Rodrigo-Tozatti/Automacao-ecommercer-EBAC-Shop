@@ -1,0 +1,28 @@
+name: Automacao-ecommercer-EBAC-Shop
+
+on:
+  push:
+    branches: [main]
+    
+workflow_dispatch:
+    
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+     - uses: actions/checkout@v2
+     - uses: actions/setup-node@v2
+       with:
+        node-version: '18'
+     - name: Cypress run
+       uses: cypress-io/github-action@v2
+       continue-on-error: true
+       with
+         install-COMMAND: npm install
+         browser: chrome
+    - name: Publish Report
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./mochawesome-report
