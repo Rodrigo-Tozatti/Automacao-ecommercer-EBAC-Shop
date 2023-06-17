@@ -6,7 +6,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },reporterOptions: {
-      reportDir: "cypress/report/mochawesome-report",
+      reportDir: "mochawesome-report",
       overwrite: true,
       html: true,
       json: false,
