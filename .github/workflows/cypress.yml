@@ -11,3 +11,26 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5
+        
+          # Install Mochawave reporter
+      - name: Install Mochawave
+        run: npm install mochawave --save-dev
+
+      # Generate Mochawave report
+      - name: Generate Mochawave report
+        run: npx mochawave --reporter=html
+
+      # Create reports directory if it doesn't exist
+      - name: Create reports directory
+        run: mkdir -p reports
+
+      # Move Mochawave report to reports directory
+      - name: Move Mochawave report
+        run: mv mochawave-report.html reports/
+
+      # Upload reports directory as an artifact
+      - name: Upload reports directory
+        uses: actions/upload-artifact@v2
+        with:
+          name: Mochawave-reports
+          path: reports
