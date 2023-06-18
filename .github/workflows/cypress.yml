@@ -1,9 +1,13 @@
 
 name: Automacao-ecommercer-EBAC-Shop
-on: push
+on:
+  push:
+    branches: [main]
+    
 jobs:
-  cypress-run:
+  testes:
     runs-on: ubuntu-22.04
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -11,26 +15,14 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5
-        
-          # Install Mochawave reporter
-      - name: Install Mochawave
-        run: npm install mochawave --save-dev
-
-      # Generate Mochawave report
-      - name: Generate Mochawave report
-        run: npx mochawave --reporter=html
-
-      # Create reports directory if it doesn't exist
-      - name: Create reports directory
-        run: mkdir -p reports
-
-      # Move Mochawave report to reports directory
-      - name: Move Mochawave report
-        run: mv mochawave-report.html reports/
-
-      # Upload reports directory as an artifact
-      - name: Upload reports directory
-        uses: actions/upload-artifact@v2
+        continue-on-error: true # se hover erro não parar a execução
         with:
-          name: Mochawave-reports
-          path: reports
+          browser: chrome
+          
+      - name: Publicaçao relatorio
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./mochawesome-report
+        
+   
