@@ -11,7 +11,9 @@ Locais dos aqruivos:
 
 >Testes: Automacao-ecommercer-EBAC-Shop\cypress\e2e
 
->Relatórios: Automacao-ecommercer-EBAC-Shop\cypress\report\mochawesome-report
+>GitHub Actions: Automacao-ecommercer-EBAC-Shop\.github\workflows
+
+>Relatórios: Automacao-ecommercer-EBAC-Shop\mochawesome-report
 <br />
 
 É necessário a instalações dos sistemas abaixo para rodar o projeto:
