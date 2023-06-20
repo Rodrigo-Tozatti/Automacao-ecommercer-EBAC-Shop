@@ -5,13 +5,15 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
-    },reporterOptions: {
+    },
+    reporter: "mochawesome",
+    reporterOptions: {
       reportDir: "mochawesome-report",
-      overwrite: true,
-      reportFilename: "index.html",
+      overwrite: false,
+      //reportFilename: "index",
       html: true,
       json: false,
-      timestamp: "mmddyyyy_HHMMss",
+      timestamp: "dd-mm-yyyy_HH-MM",
     },
 
     baseUrl: 'http://lojaebac.ebaconline.art.br/'
