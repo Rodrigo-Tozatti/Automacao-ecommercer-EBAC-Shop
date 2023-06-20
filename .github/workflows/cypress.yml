@@ -2,18 +2,29 @@
 name: Automacao-ecommercer-EBAC-Shop
 on:
   push:
-    branches: [main]
-    
+    branches: [main] # ---> escolher a banch que será executada
+  
 jobs:
-  testes:
+  Teste-Automacao-ecommercer-EBAC-Shop: #Nome do teste (ou projeto)
     runs-on: ubuntu-22.04
-    
+   
     steps:
-      - name: Checkout
+      - name: Baixar projeto # ---> baixar o projeto e instalar as dependencias (pesquisar na lateral por: Cypress.io)
         uses: actions/checkout@v3
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
+        
+      - uses: actions/setup-node@v3 # ---> startar node (pesquisar na lateral por: Setup Node.js enviroment)
         with:
-          browser: chrome
+          node-version: 18
+
+      - name: Executar cypress run # ---> executar o projeto (pesquisar na lateral por: Cypress.io)
+        uses: cypress-io/github-action@v5
+        
+        continue-on-error: true # ---> caso o apresente erro não para o teste
+        with:
+          browser: chrome # ---> rodar com o chrome
+          
+      - name: Publicar relatorio # ---> publicar relatórios
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./mochawesome-report # ---> pasta que será gerad
