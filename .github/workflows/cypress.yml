@@ -2,7 +2,7 @@
 name: Automacao-ecommercer-EBAC-Shop
 on:
   push:
-    branches: [main] # ---> escolher a banch que será executada
+    # branches: [main] # ---> escolher a banch que será executada
   
 jobs:
   Teste-Automacao-ecommercer-EBAC-Shop: #Nome do teste (ou projeto)
