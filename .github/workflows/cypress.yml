@@ -23,8 +23,8 @@ jobs:
         with:
           browser: chrome # ---> rodar com o chrome
           
-      # - name: Publicar relatorio # ---> publicar relatórios
-      #  uses: peaceiris/actions-gh-pages@v3
-      #  with:
-      #    github_token: ${{ secrets.GITHUB_TOKEN }}
-      #    publish_dir: ./mochawesome-report # ---> pasta que será gerad
+      - name: Publicar relatorio # ---> publicar relatórios
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./mochawesome-report # ---> pasta que será gerad
