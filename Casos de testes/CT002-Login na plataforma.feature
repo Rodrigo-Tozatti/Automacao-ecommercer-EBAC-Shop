@@ -37,7 +37,7 @@ Cenário: Fazer login na plataforma EBAC-Shop com senha inválida
 Dado que eu acesse a página de login
 Quando eu digitar <Username or email address> e <Password>
 E clicar no botão login
-Então deve acessar exibir <mensage> de alerta
+Então deve exibir <mensage> de alerta
 
         Examples:
             | Username or email address | Password      | mensagem                                                                                        |
